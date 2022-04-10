@@ -17,11 +17,10 @@ setInterval(function(){
 
 function Get500Orders(){
     let orderArray = new Array(500);
-    let currentTime;
     for(let i = 0; i < orderArray.length; i++){
         let newOrder = new OrderObject();
         if (i = 0){
-            currentTime = document.getElementById("order-time").value;            
+            let currentTime = document.getElementById("order-time").value;            
             newOrder.StoreID = document.getElementById("storeID").value;
             newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
             newOrder.CdID = document.getElementById("cdID").value;
@@ -33,7 +32,8 @@ function Get500Orders(){
             newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
             newOrder.CdID = document.getElementById("cdID").value;
             newOrder.PricePaid = document.getElementById("pricePaid").value;
-            newOrder.Date = currentTime.setSeconds(date.getSeconds() + Math.floor(Math.random() * 1501  + 300));
+            currentTime.setSeconds(currentTime.getSeconds() + Math.floor(Math.random() * 1501  + 300));
+            newOrder.Date = currentTime;
         }
         orderArray[i] = newOrder;
     }
