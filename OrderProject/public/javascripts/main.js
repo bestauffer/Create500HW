@@ -52,39 +52,41 @@ function setOrderValues(){
 document.addEventListener("DOMContentLoaded", function () {
     setOrderValues();
 
+
+
 // add button events ************************************************************************
-    document.getElementById("buttonCreate").addEventListener("click", function () {
-        let newOrder = new OrderObject();
-        newOrder.StoreID = document.getElementById("storeID").value;
-        newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
-        newOrder.CdID = document.getElementById("cdID").value;
-        newOrder.PricePaid = document.getElementById("pricePaid").value;
-        newOrder.Date = document.getElementById("order-time").value;
+    // document.getElementById("buttonSubmitOne").addEventListener("click", function () {
+    //     let newOrder = new OrderObject();
+    //     newOrder.StoreID = document.getElementById("storeID").value;
+    //     newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
+    //     newOrder.CdID = document.getElementById("cdID").value;
+    //     newOrder.PricePaid = document.getElementById("pricePaid").value;
+    //     newOrder.Date = document.getElementById("order-time").value;
 
 
-        // fetch('/AddOrder', {
-        //     method: "POST",
-        //     body: JSON.stringify(newOrder),
-        //     headers: {"Content-type": "application/json; charset=UTF-8"}
-        //     })
-        //     .then(response => response.json()) 
-        //     .then(json => console.log(json)
-        //     )
-        //     .catch(err => console.log(err));
+    //     // fetch('/AddOrder', {
+    //     //     method: "POST",
+    //     //     body: JSON.stringify(newOrder),
+    //     //     headers: {"Content-type": "application/json; charset=UTF-8"}
+    //     //     })
+    //     //     .then(response => response.json()) 
+    //     //     .then(json => console.log(json)
+    //     //     )
+    //     //     .catch(err => console.log(err));
     
-        // $.ajax({
-        //     url : "/AddMovie",
-        //     type: "POST",
-        //     data: JSON.stringify(newMovie),
-        //     contentType: "application/json; charset=utf-8",
-        //      success: function (result) {
-        //         console.log(result);
-        //         createList();
-        //     }
-        // });
+    //     // $.ajax({
+    //     //     url : "/AddMovie",
+    //     //     type: "POST",
+    //     //     data: JSON.stringify(newMovie),
+    //     //     contentType: "application/json; charset=utf-8",
+    //     //      success: function (result) {
+    //     //         console.log(result);
+    //     //         createList();
+    //     //     }
+    //     // });
 
-        setOrderValues();
-    }); 
+    //setOrderValues();
+    // }); 
     
 
 });  
