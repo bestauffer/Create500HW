@@ -15,6 +15,30 @@ setInterval(function(){
     document.getElementById("order-time").value = new Date();
 }, 100);
 
+function Get500Orders(){
+    let orderArray = new Array(500);
+    let currentTime;
+    for(let i = 0; i < orderArray.length; i++){
+        let newOrder = new OrderObject();
+        if (i = 0){
+            currentTime = document.getElementById("order-time").value;            
+            newOrder.StoreID = document.getElementById("storeID").value;
+            newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
+            newOrder.CdID = document.getElementById("cdID").value;
+            newOrder.PricePaid = document.getElementById("pricePaid").value;
+            newOrder.Date = document.getElementById("order-time").value;
+        }
+        else{
+            newOrder.StoreID = document.getElementById("storeID").value;
+            newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
+            newOrder.CdID = document.getElementById("cdID").value;
+            newOrder.PricePaid = document.getElementById("pricePaid").value;
+            newOrder.Date = currentTime.setSeconds(date.getSeconds() + Math.floor(Math.random() * 1501  + 300));
+        }
+        orderArray[i] = newOrder;
+    }
+}
+
 //set the remaining values for an order object when CREATE button is clicked
 function setOrderValues(){
     let order = new OrderObject;
