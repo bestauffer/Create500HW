@@ -18,7 +18,7 @@ setInterval(function(){
 function Get500Orders(){
     //After the for loop, this will contain 500 orders
     let orderArray = new Array(500);
-    let currentTime = document.getElementById("order-time").value;;
+    let currentTime = document.getElementById("order-time").value;
     for(let i = 0; i < orderArray.length; i++){
         //Set the time
         let newOrder = new OrderObject();
