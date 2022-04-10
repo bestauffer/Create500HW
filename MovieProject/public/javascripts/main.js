@@ -1,5 +1,3 @@
-
-let orderArray = [];
 let storeIdValues = [98053, 98007, 98077, 98055, 98011, 98046];
 let cdIdValues = [123456, 123654, 321456, 321654, 654123, 654321, 543216, 354126, 621453, 623451];
 
@@ -18,58 +16,62 @@ let OrderObject = function () {
 function setOrderValues(){
     let order = new OrderObject;
     order.StoreID = storeIdValues[Math.floor(Math.random() * 6)];
+    //sets the SalesPersonID
+    switch(order.StoreID){
+        case 98053:
+            order.SalesPersonID = Math.floor(Math.random() * 4) + 1;
+            break;
+        case 98007:
+            order.SalesPersonID = Math.floor(Math.random() * 4) + 5;
+            break;
+        case 98077:
+            order.SalesPersonID = Math.floor(Math.random() * 4) + 9;
+            break;
+        case 98055:
+            order.SalesPersonID = Math.floor(Math.random() * 4) + 13;
+            break;
+        case 98011:
+            order.SalesPersonID = Math.floor(Math.random() * 4) + 17;
+            break;
+        case 98046:
+            order.SalesPersonID = Math.floor(Math.random() * 4) + 21;
+            break;
+    }
     order.CdID = cdIdValues[Math.floor(Math.random() * 9)];
     order.PricePaid = Math.floor(Math.random() * 10) + 5;
     order.Date = new Date();
-    return order;
+
+    document.getElementById("storeID").value = order.StoreID;
+    document.getElementById("order-time").value = order.Date;    
+    document.getElementById("salesPersonID").value = order.SalesPersonID;
+    document.getElementById("cdID").value = order.CdID;
+    document.getElementById("pricePaid").value = order.PricePaid;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    let newOrder = new OrderObject;
-    newOrder = setOrderValues();
+    setOrderValues();
 
-    document.getElementById("storeID").value = newOrder.StoreID;
-    //set the Date
-    document.getElementById("order-time").value = newOrder.Date;
-    //sets the SalesPersonID
-    switch(newOrder.StoreID){
-        case 98053:
-            newOrder.SalesPersonID = Math.floor(Math.random() * 4) + 1;
-            break;
-        case 98007:
-            newOrder.SalesPersonID = Math.floor(Math.random() * 4) + 5;
-            break;
-        case 98077:
-            newOrder.SalesPersonID = Math.floor(Math.random() * 4) + 9;
-            break;
-        case 98055:
-            newOrder.SalesPersonID = Math.floor(Math.random() * 4) + 13;
-            break;
-        case 98011:
-            newOrder.SalesPersonID = Math.floor(Math.random() * 4) + 17;
-            break;
-        case 98046:
-            newOrder.SalesPersonID = Math.floor(Math.random() * 4) + 21;
-            break;
-    }
-    document.getElementById("salesPersonID").value = newOrder.SalesPersonID;
-    document.getElementById("cdID").value = newOrder.CdID;
-    document.getElementById("pricePaid").value = newOrder.PricePaid;
+    
 
 // add button events ************************************************************************
-    document.getElementById("buttonAdd").addEventListener("click", function () {
-        let newOrder = new OrderObject(document.getElementById("title").value, 
-        document.getElementById("year").value, selectedGenre);
+    document.getElementById("buttonCreate").addEventListener("click", function () {
+        let newOrder = new OrderObject();
+        newOrder.StoreID = document.getElementById("storeID").value;
+        newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
+        newOrder.CdID = document.getElementById("cdID").value;
+        newOrder.PricePaid = document.getElementById("pricePaid").value;
+        newOrder.Date = document.getElementById("order-time").value;
 
-        fetch('/AddOrder', {
-            method: "POST",
-            body: JSON.stringify(newMovie),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-            })
-            .then(response => response.json()) 
-            .then(json => console.log(json)
-            )
-            .catch(err => console.log(err));
+
+        // fetch('/AddOrder', {
+        //     method: "POST",
+        //     body: JSON.stringify(newOrder),
+        //     headers: {"Content-type": "application/json; charset=UTF-8"}
+        //     })
+        //     .then(response => response.json()) 
+        //     .then(json => console.log(json)
+        //     )
+        //     .catch(err => console.log(err));
     
         // $.ajax({
         //     url : "/AddMovie",
@@ -81,8 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
         //         createList();
         //     }
         // });
-       
+        
+        setOrderValues();
     }); 
+    
 
 });  
 // end of wait until document has loaded event  *************************************************************************
