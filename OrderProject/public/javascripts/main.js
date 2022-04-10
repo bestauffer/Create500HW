@@ -2,7 +2,7 @@ let storeIdValues = [98053, 98007, 98077, 98055, 98011, 98046];
 let cdIdValues = [123456, 123654, 321456, 321654, 654123, 654321, 543216, 354126, 621453, 623451];
 
 // define a constructor to create movie objects
-let OrderObject = function () {
+let OrderObject = function(){
     this.StoreID;
     this.SalesPersonID;
     this.CdID;
@@ -38,12 +38,13 @@ function Get500Orders(){
             newOrder.Date = currentTime;
         }
         orderArray[i] = newOrder;
+        SetOrderValues();
     }
 }
 
 //set the remaining values for an order object when CREATE button is clicked
 function SetOrderValues(){
-    let order = new OrderObject;
+    let order = new OrderObject();
     //0-5
     order.StoreID = storeIdValues[Math.floor(Math.random() * 6)];
     //sets the SalesPersonID
