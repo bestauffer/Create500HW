@@ -21,7 +21,7 @@ function Get500Orders(){
     let currentTime;
     for(let i = 0; i < orderArray.length; i++){
         let newOrder = new OrderObject();
-        if (i = 0){
+        if (i == 0){
             currentTime = document.getElementById("order-time").value;            
             newOrder.StoreID = document.getElementById("storeID").value;
             newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
