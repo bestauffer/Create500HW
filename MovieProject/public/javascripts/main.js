@@ -37,8 +37,8 @@ function setOrderValues(){
             order.SalesPersonID = Math.floor(Math.random() * 4) + 21;
             break;
     }
-    order.CdID = cdIdValues[Math.floor(Math.random() * 9)];
-    order.PricePaid = Math.floor(Math.random() * 10) + 5;
+    order.CdID = cdIdValues[Math.floor(Math.random() * 10)];
+    order.PricePaid = Math.floor(Math.random() * 11) + 5;
     order.Date = new Date();
 
     document.getElementById("storeID").value = order.StoreID;
