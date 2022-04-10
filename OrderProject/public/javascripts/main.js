@@ -18,14 +18,11 @@ setInterval(function(){
 function Get500Orders(){
     //After the for loop, this will contain 500 orders
     let orderArray = new Array(500);
-    let currentTime;
+    let currentTime = document.getElementById("order-time").value;;
     for(let i = 0; i < orderArray.length; i++){
         //Set the time
         let newOrder = new OrderObject();
-        if (i == 0){
-            currentTime = document.getElementById("order-time").value;
-        }
-        else{
+        if (i != 0){
             currentTime.setSeconds(currentTime.getSeconds() + Math.floor(Math.random() * 1501  + 300));            
         }
         newOrder.Date = currentTime;
