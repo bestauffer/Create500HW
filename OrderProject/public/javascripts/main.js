@@ -34,9 +34,9 @@ function Get500Orders(){
         newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
         newOrder.CdID = document.getElementById("cdID").value;
         newOrder.PricePaid = document.getElementById("pricePaid").value;
-
+        //Add the order to the array at index i
         orderArray[i] = newOrder;
-        SetOrderValues();
+        SetOrderValues(); //makes new random data points
     }
 }
 
