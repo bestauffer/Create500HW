@@ -18,29 +18,38 @@ setInterval(function(){
 //set the remaining values for an order object
 function setOrderValues(){
     let order = new OrderObject;
+    //0-5
     order.StoreID = storeIdValues[Math.floor(Math.random() * 6)];
     //sets the SalesPersonID
     switch(order.StoreID){
         case 98053:
+            //1-4
             order.SalesPersonID = Math.floor(Math.random() * 4  + 1);
             break;
         case 98007:
+            //5-8
             order.SalesPersonID = Math.floor(Math.random() * 4  + 5);
             break;
         case 98077:
+            //9-12
             order.SalesPersonID = Math.floor(Math.random() * 4  + 9);
             break;
         case 98055:
+            //13-16
             order.SalesPersonID = Math.floor(Math.random() * 4 + 13);
             break;
         case 98011:
+            //17-20
             order.SalesPersonID = Math.floor(Math.random() * 4) + 17;
             break;
         case 98046:
+            //21-24
             order.SalesPersonID = Math.floor(Math.random() * 4) + 21;
             break;
     }
+    //0-9
     order.CdID = cdIdValues[Math.floor(Math.random() * 10)];
+    //5-15
     order.PricePaid = Math.floor(Math.random() * 11) + 5;
 
     document.getElementById("storeID").value = order.StoreID; 
