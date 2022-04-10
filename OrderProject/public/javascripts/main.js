@@ -20,23 +20,21 @@ function Get500Orders(){
     let orderArray = new Array(500);
     let currentTime;
     for(let i = 0; i < orderArray.length; i++){
+        //Set the time
         let newOrder = new OrderObject();
         if (i == 0){
-            currentTime = document.getElementById("order-time").value;            
-            newOrder.StoreID = document.getElementById("storeID").value;
-            newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
-            newOrder.CdID = document.getElementById("cdID").value;
-            newOrder.PricePaid = document.getElementById("pricePaid").value;
-            newOrder.Date = document.getElementById("order-time").value;
+            currentTime = document.getElementById("order-time").value;
+            newOrder.Date = currentTime;
         }
         else{
-            newOrder.StoreID = document.getElementById("storeID").value;
-            newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
-            newOrder.CdID = document.getElementById("cdID").value;
-            newOrder.PricePaid = document.getElementById("pricePaid").value;
             currentTime.setSeconds(currentTime.getSeconds() + Math.floor(Math.random() * 1501  + 300));
             newOrder.Date = currentTime;
         }
+        newOrder.StoreID = document.getElementById("storeID").value;
+        newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
+        newOrder.CdID = document.getElementById("cdID").value;
+        newOrder.PricePaid = document.getElementById("pricePaid").value;
+
         orderArray[i] = newOrder;
         SetOrderValues();
     }
