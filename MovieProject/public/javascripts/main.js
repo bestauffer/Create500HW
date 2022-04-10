@@ -19,16 +19,16 @@ function setOrderValues(){
     //sets the SalesPersonID
     switch(order.StoreID){
         case 98053:
-            order.SalesPersonID = Math.floor(Math.random() * 4) + 1;
+            order.SalesPersonID = Math.floor(Math.random() * 4  + 1);
             break;
         case 98007:
-            order.SalesPersonID = Math.floor(Math.random() * 4) + 5;
+            order.SalesPersonID = Math.floor(Math.random() * 4  + 5);
             break;
         case 98077:
-            order.SalesPersonID = Math.floor(Math.random() * 4) + 9;
+            order.SalesPersonID = Math.floor(Math.random() * 4  + 9);
             break;
         case 98055:
-            order.SalesPersonID = Math.floor(Math.random() * 4) + 13;
+            order.SalesPersonID = Math.floor(Math.random() * 4 + 13);
             break;
         case 98011:
             order.SalesPersonID = Math.floor(Math.random() * 4) + 17;
@@ -50,8 +50,6 @@ function setOrderValues(){
 
 document.addEventListener("DOMContentLoaded", function () {
     setOrderValues();
-
-    
 
 // add button events ************************************************************************
     document.getElementById("buttonCreate").addEventListener("click", function () {
@@ -83,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //         createList();
         //     }
         // });
-        
+
         setOrderValues();
     }); 
     
