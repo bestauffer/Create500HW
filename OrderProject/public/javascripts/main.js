@@ -24,12 +24,11 @@ function Get500Orders(){
         let newOrder = new OrderObject();
         if (i == 0){
             currentTime = document.getElementById("order-time").value;
-            newOrder.Date = currentTime;
         }
         else{
-            currentTime.setSeconds(currentTime.getSeconds() + Math.floor(Math.random() * 1501  + 300));
-            newOrder.Date = currentTime;
+            currentTime.setSeconds(currentTime.getSeconds() + Math.floor(Math.random() * 1501  + 300));            
         }
+        newOrder.Date = currentTime;
         newOrder.StoreID = document.getElementById("storeID").value;
         newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
         newOrder.CdID = document.getElementById("cdID").value;
