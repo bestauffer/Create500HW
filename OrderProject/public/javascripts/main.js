@@ -16,7 +16,9 @@ setInterval(function(){
 }, 100);
 
 function Get500Orders(){
+    //After the for loop, this will contain 500 orders
     let orderArray = new Array(500);
+
     for(let i = 0; i < orderArray.length; i++){
         let newOrder = new OrderObject();
         if (i = 0){
@@ -40,7 +42,7 @@ function Get500Orders(){
 }
 
 //set the remaining values for an order object when CREATE button is clicked
-function setOrderValues(){
+function SetOrderValues(){
     let order = new OrderObject;
     //0-5
     order.StoreID = storeIdValues[Math.floor(Math.random() * 6)];
@@ -83,7 +85,7 @@ function setOrderValues(){
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    setOrderValues();
+    SetOrderValues();
 
 
 
@@ -117,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //     //     }
     //     // });
 
-    //setOrderValues();
+    //SetOrderValues();
     // }); 
     
 
