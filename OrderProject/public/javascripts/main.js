@@ -18,7 +18,7 @@ setInterval(function(){
 function Get500Orders(){
     //After the for loop, this will contain 500 orders
     let orderArray = new Array(500);
-    let currentTime = document.getElementById("order-time").value;
+    let currentTime = new Date(document.getElementById("order-time").value);
     for(let i = 0; i < orderArray.length; i++){
         //Set the time
         let newOrder = new OrderObject();
@@ -36,7 +36,15 @@ function Get500Orders(){
 
         //Add code to send newOrder to node server below here
         //Or try to send the whole array instead further down
-
+        fetch('/AddOrder', {
+            method: "POST",
+            body: JSON.stringify(newOrder),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+            })
+            .then(response => response.json()) 
+            .then(json => console.log(json)
+            )
+            .catch(err => console.log(err));
 
         //makes new random data points & sends them to 
         SetOrderValues(); 
@@ -90,6 +98,26 @@ function SetOrderValues(){
 }
 //Create a function that sends the current order to the node server
 function SubmitOne(){
+    let newOrder = new OrderObject();
+
+    //Get values for new order object from html
+    newOrder.Date = document.getElementById("order-time").value;
+    newOrder.StoreID = document.getElementById("storeID").value;
+    newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
+    newOrder.CdID = document.getElementById("cdID").value;
+    newOrder.PricePaid = document.getElementById("pricePaid").value;
+
+    //Fetch to make sure server is receiving object
+    fetch('/oneOrder', {
+        method: "POST",
+        body: JSON.stringify(newOrder),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+        .then(response => response.json()) 
+        .then(json => console.log(json)
+        )
+        .catch(err => console.log(err));
+        console.log(newOrder);
 
 }
 
