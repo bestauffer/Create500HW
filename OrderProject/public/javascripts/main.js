@@ -15,7 +15,7 @@ setInterval(function(){
     document.getElementById("order-time").value = new Date();
 }, 100);
 
-//set the remaining values for an order object
+//set the remaining values for an order object when CREATE button is clicked
 function setOrderValues(){
     let order = new OrderObject;
     //0-5
@@ -84,13 +84,12 @@ document.addEventListener("DOMContentLoaded", function () {
     //     //     .catch(err => console.log(err));
     
     //     // $.ajax({
-    //     //     url : "/AddMovie",
+    //     //     url : "/AddOrder",
     //     //     type: "POST",
-    //     //     data: JSON.stringify(newMovie),
+    //     //     data: JSON.stringify(newOrder),
     //     //     contentType: "application/json; charset=utf-8",
     //     //      success: function (result) {
     //     //         console.log(result);
-    //     //         createList();
     //     //     }
     //     // });
 
