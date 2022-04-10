@@ -18,11 +18,11 @@ setInterval(function(){
 function Get500Orders(){
     //After the for loop, this will contain 500 orders
     let orderArray = new Array(500);
-
+    let currentTime;
     for(let i = 0; i < orderArray.length; i++){
         let newOrder = new OrderObject();
         if (i = 0){
-            let currentTime = document.getElementById("order-time").value;            
+            currentTime = document.getElementById("order-time").value;            
             newOrder.StoreID = document.getElementById("storeID").value;
             newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
             newOrder.CdID = document.getElementById("cdID").value;
