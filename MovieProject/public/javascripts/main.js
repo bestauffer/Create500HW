@@ -10,9 +10,12 @@ let OrderObject = function () {
     this.Date;
 }
 
-// setInterval(function(){
-//     document.getElementById("order-time").value = new Date();
-// }, 100);
+//continuously updates the time
+setInterval(function(){
+    document.getElementById("order-time").value = new Date();
+}, 100);
+
+//set the remaining values for an order object
 function setOrderValues(){
     let order = new OrderObject;
     order.StoreID = storeIdValues[Math.floor(Math.random() * 6)];
@@ -39,10 +42,8 @@ function setOrderValues(){
     }
     order.CdID = cdIdValues[Math.floor(Math.random() * 10)];
     order.PricePaid = Math.floor(Math.random() * 11) + 5;
-    order.Date = new Date();
 
-    document.getElementById("storeID").value = order.StoreID;
-    document.getElementById("order-time").value = order.Date;    
+    document.getElementById("storeID").value = order.StoreID; 
     document.getElementById("salesPersonID").value = order.SalesPersonID;
     document.getElementById("cdID").value = order.CdID;
     document.getElementById("pricePaid").value = order.PricePaid;
