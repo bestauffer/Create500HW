@@ -30,15 +30,20 @@ function Get500Orders(){
         newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
         newOrder.CdID = document.getElementById("cdID").value;
         newOrder.PricePaid = document.getElementById("pricePaid").value;
-        
+
         //Add the order to the array at index i
         orderArray[i] = newOrder;
 
-        //Add code to send to node server here
+        //Add code to send newOrder to node server below here
+        //Or try to send the whole array instead further down
 
-        //makes new random data points
+
+        //makes new random data points & sends them to 
         SetOrderValues(); 
     }
+        //Or add code below here to send orderArray to node server
+
+
 }
 
 //set the remaining values for an order object when CREATE button is clicked
@@ -83,7 +88,12 @@ function SetOrderValues(){
     document.getElementById("cdID").value = order.CdID;
     document.getElementById("pricePaid").value = order.PricePaid;
 }
+//Create a function that sends the current order to the node server
+function SubmitOne(){
 
+}
+
+//A function that says what the page does when it loads
 document.addEventListener("DOMContentLoaded", function () {
     SetOrderValues();
 
