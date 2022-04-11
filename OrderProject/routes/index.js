@@ -19,8 +19,19 @@ router.get('/', function(req, res, next) {
   res.sendFile('index.html');
 });
 
+//Verify server is getting order
+router.post('/oneOrder', function(req, res) {
+  const newOrder = req.body;  // get the object from the req object sent from browser
+  console.log(newOrder);
+  // prepare a reply to the browser
+  var response = {
+    status  : 200,
+    success : 'Server is receiving Order'
+  }
+  res.end(JSON.stringify(response)); // send reply
+});
 
-/* Add one new Movie */
+/* Add one new Order */
 router.post('/AddOrder', function(req, res) {
   const newOrder = req.body;  // get the object from the req object sent from browser
   console.log(newOrder);
