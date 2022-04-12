@@ -1,9 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var fs = require("fs");
-
-// start by creating data so we don't have to type it in each time
-let ServerOrderArray = [];
 
 // removed my file management code,
 

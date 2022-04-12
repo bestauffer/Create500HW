@@ -34,5 +34,6 @@ const OrderSchema = new Schema({
     }
   });
 
+  //orders is the name of the DB we are using
   module.exports = mongoose.model("Orders", OrderSchema);
 
