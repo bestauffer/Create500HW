@@ -17,9 +17,8 @@ setInterval(function(){
 
 function Get500Orders(){
     //After the for loop, this will contain 500 orders
-    let orderArray = new Array(500);
     let currentTime = new Date(document.getElementById("order-time").value);
-    for(let i = 0; i < orderArray.length; i++){
+    for(let i = 0; i < 500; i++){
         //Set the time
         let newOrder = new OrderObject();
         if (i != 0){
@@ -31,8 +30,7 @@ function Get500Orders(){
         newOrder.CdID = document.getElementById("cdID").value;
         newOrder.PricePaid = document.getElementById("pricePaid").value;
 
-        //Add the order to the array at index i
-        orderArray[i] = newOrder;
+        
 
         //Add code to send newOrder to node server below here
         //Or try to send the whole array instead further down
