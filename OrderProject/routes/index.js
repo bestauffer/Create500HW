@@ -20,6 +20,12 @@ const dbURI =
 
   // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
 // by default, you need to set it to false.
+
+
+
+
+
+
 mongoose.set('useFindAndModify', false);
 
 const options = {
@@ -35,13 +41,6 @@ mongoose.connect(dbURI, options).then(
     console.log("Error connecting Database instance due to: ", err);
   }
 );
-
-
-
-
-
-
-
 
 
 /* GET home page. */
@@ -76,7 +75,7 @@ router.post('/oneOrder', function(req, res) {
 });
 
 /* Add one new Order */
-router.post('/AddOrder', function(req, res) {
+router.post('/addOrder', function(req, res) {
 
   let oneNewOrder = new OrderSchema(req.body);  
   console.log(req.body);
