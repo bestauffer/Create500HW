@@ -97,5 +97,19 @@ router.post('/addOrder', function(req, res) {
   });
 });
 
+// delete order
+router.delete('/DeleteOrder/:ID', function (req, res) {
+  OrderSchema.deleteOne({ ID: req.params.ID }, (err, note) => { 
+    if (err) {
+      res.status(404).send(err);
+    }
+    var response = {
+      status  : 200,
+      success : 'Order ' +  req.params.ID + ' deleted!'
+    }
+    res.end(JSON.stringify(response)); // send reply
+  });
+});
+
 
 module.exports = router;

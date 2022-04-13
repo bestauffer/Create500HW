@@ -126,8 +126,12 @@ function SubmitOne(){
 //A function that says what the page does when it loads
 document.addEventListener("DOMContentLoaded", function () {
     SetOrderValues();
+    createList();
 
 
+    document.getElementById("buttonDelete").addEventListener("click", function () {
+        deleteOrder(document.getElementById("deleteID").value);      
+    });
 
 // add button events ************************************************************************
     // document.getElementById("buttonSubmitOne").addEventListener("click", function () {
