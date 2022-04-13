@@ -1,5 +1,5 @@
-let storeIdValues = [98053, 98007, 98077, 98055, 98011, 98046];
-let cdIdValues = [123456, 123654, 321456, 321654, 654123, 654321, 543216, 354126, 621453, 623451];
+const storeIdValues = [98053, 98007, 98077, 98055, 98011, 98046];
+const cdIdValues = [123456, 123654, 321456, 321654, 654123, 654321, 543216, 354126, 621453, 623451];
 let orderArray = [];
 
 // define a constructor to create movie objects
@@ -14,7 +14,8 @@ let OrderObject = function(){
 
 //continuously updates the time
 setInterval(function(){
-    document.getElementById("order-time").value = new Date();
+    let timeElapsed = Date.now();
+    document.getElementById("order-time").value = new Date(timeElapsed).toISOString();
 }, 100);
 
 function Get500Orders(){
@@ -26,7 +27,7 @@ function Get500Orders(){
         if (i != 0){
             currentTime.setSeconds(currentTime.getSeconds() + Math.floor(Math.random() * 1501  + 300));            
         }
-        newOrder.Date = currentTime;
+        newOrder.Date = currentTime.toISOString();
         newOrder.StoreID = document.getElementById("storeID").value;
         newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
         newOrder.CdID = document.getElementById("cdID").value;
@@ -109,7 +110,7 @@ function SubmitOne(){
     newOrder.PricePaid = document.getElementById("pricePaid").value;
 
     //Fetch to make sure server is receiving object
-    fetch('/addOrder', {
+    fetch('/oneOrder', {
         method: "POST",
         body: JSON.stringify(newOrder),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -128,44 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
     SetOrderValues();
     createList();
 
-
     document.getElementById("buttonDelete").addEventListener("click", function () {
         deleteOrder(document.getElementById("deleteID").value);      
-    });
-
-// add button events ************************************************************************
-    // document.getElementById("buttonSubmitOne").addEventListener("click", function () {
-    //     let newOrder = new OrderObject();
-    //     newOrder.StoreID = document.getElementById("storeID").value;
-    //     newOrder.SalesPersonID = document.getElementById("salesPersonID").value;
-    //     newOrder.CdID = document.getElementById("cdID").value;
-    //     newOrder.PricePaid = document.getElementById("pricePaid").value;
-    //     newOrder.Date = document.getElementById("order-time").value;
-
-
-    //     // fetch('/AddOrder', {
-    //     //     method: "POST",
-    //     //     body: JSON.stringify(newOrder),
-    //     //     headers: {"Content-type": "application/json; charset=UTF-8"}
-    //     //     })
-    //     //     .then(response => response.json()) 
-    //     //     .then(json => console.log(json)
-    //     //     )
-    //     //     .catch(err => console.log(err));
-    
-    //     // $.ajax({
-    //     //     url : "/AddOrder",
-    //     //     type: "POST",
-    //     //     data: JSON.stringify(newOrder),
-    //     //     contentType: "application/json; charset=utf-8",
-    //     //      success: function (result) {
-    //     //         console.log(result);
-    //     //     }
-    //     // });
-
-    //SetOrderValues();
-    // }); 
-    
+    });    
 
 });  
 // end of wait until document has loaded event  *************************************************************************
