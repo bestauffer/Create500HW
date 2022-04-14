@@ -3,19 +3,20 @@ const cdIdValues = [123456, 123654, 321456, 321654, 654123, 654321, 543216, 3541
 let orderArray = [];
 
 // define a constructor to create movie objects
-let OrderObject = function(){
-    this.ID = Math.random().toString(16).slice(5);
-    this.StoreID;
-    this.SalesPersonID;
-    this.CdID;
-    this.PricePaid;
-    this.Date;
+class OrderObject {
+    constructor() {
+        this.ID = Math.random().toString(16).slice(5);
+        this.StoreID;
+        this.SalesPersonID;
+        this.CdID;
+        this.PricePaid;
+        this.Date;
+    }
 }
 
 //continuously updates the time
 setInterval(function(){
-    let timeElapsed = Date.now();
-    document.getElementById("order-time").value = new Date(timeElapsed).toISOString();
+    document.getElementById("order-time").value = new Date().toISOString();
 }, 100);
 
 function Get500Orders(){
@@ -33,27 +34,20 @@ function Get500Orders(){
         newOrder.CdID = document.getElementById("cdID").value;
         newOrder.PricePaid = document.getElementById("pricePaid").value;
 
-        
-
         //Add code to send newOrder to node server below here
         //Or try to send the whole array instead further down
         fetch('/addOrder', {
             method: "POST",
             body: JSON.stringify(newOrder),
             headers: {"Content-type": "application/json; charset=UTF-8"}
-            })
-            .then(response => response.json()) 
-            .then(json => console.log(json),
-            createList()
-            )
-            .catch(err => console.log(err));
+        })
+        .then(response => response.json()) 
+        .then(json => console.log(json), createList())
+        .catch(err => console.log(err));
 
         //makes new random data points & sends them to 
         SetOrderValues(); 
     }
-        //Or add code below here to send orderArray to node server
-
-
 }
 
 //set the remaining values for an order object when CREATE button is clicked
@@ -86,13 +80,12 @@ function SetOrderValues(){
         case 98046:
             //21-24
             order.SalesPersonID = Math.floor(Math.random() * 4) + 21;
-            break;
     }
     //0-9
     order.CdID = cdIdValues[Math.floor(Math.random() * 10)];
     //5-15
     order.PricePaid = Math.floor(Math.random() * 11) + 5;
-
+    //Update the Elements with the new values
     document.getElementById("storeID").value = order.StoreID; 
     document.getElementById("salesPersonID").value = order.SalesPersonID;
     document.getElementById("cdID").value = order.CdID;
@@ -114,14 +107,11 @@ function SubmitOne(){
         method: "POST",
         body: JSON.stringify(newOrder),
         headers: {"Content-type": "application/json; charset=UTF-8"}
-        })
-        .then(response => response.json()) 
-        .then(json => console.log(json),
-        createList()
-        )
-        .catch(err => console.log(err));
-        console.log(newOrder);
-
+    })
+    .then(response => response.json()) 
+    .then(json => console.log(json), createList())
+    .catch(err => console.log(err));
+    console.log(newOrder);
 }
 
 //A function that says what the page does when it loads
@@ -132,64 +122,48 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("buttonDelete").addEventListener("click", function () {
         deleteOrder(document.getElementById("deleteID").value);      
     });    
-
 });  
 // end of wait until document has loaded event  *************************************************************************
+
 function createList() {
     // update local array from server
+    fetch('/getAllOrders')
+    // Handle success
+    .then(response => response.json())  // get the data out of the response object
+    .then( responseData => fillUL(responseData))    //update our array and li's
+    .catch(err => console.log('Request Failed', err)); // Catch errors
+};
     
-        fetch('/getAllOrders')
-        // Handle success
-        .then(response => response.json())  // get the data out of the response object
-        .then( responseData => fillUL(responseData))    //update our array and li's
-        .catch(err => console.log('Request Failed', err)); // Catch errors
+function fillUL(data) {
+    orderArray = data;
+    console.log(orderArray);
+    // clear prior data
+    var divOrderList = document.getElementById("divOrderList");
+    while (divOrderList.firstChild) {    // remove any old data so don't get duplicates
+        divOrderList.removeChild(divOrderList.firstChild);
     };
     
-    // function createListDrama() {
-    //     // update local array from server
-        
-    //         fetch('/getAllDramaMovies')
-    //         // Handle success
-    //         .then(response => response.json())  // get the data out of the response object
-    //         .then( responseData => fillUL(responseData))    //update our array and li's
-    //         .catch(err => console.log('Request Failed', err)); // Catch errors
-    //     };
-    
-    function fillUL(data) {
-        orderArray = data;
-        console.log(orderArray);
-            // clear prior data
-        var divOrderList = document.getElementById("divOrderList");
-        while (divOrderList.firstChild) {    // remove any old data so don't get duplicates
-            divOrderList.removeChild(divOrderList.firstChild);
-        };
-    
-        var ul = document.createElement('ul');
+    var ul = document.createElement('ul');
        
-        orderArray.forEach(function (element,) {   // use handy array forEach method
-            var li = document.createElement('li');
-            li.innerHTML = element.ID + ":  &nbsp &nbsp  &nbsp &nbsp " + 
-            element.StoreID + "  &nbsp &nbsp  &nbsp &nbsp "  +
-            element.SalesPersonID + " &nbsp &nbsp  &nbsp &nbsp  " + 
-            element.CdID  + " &nbsp &nbsp  &nbsp &nbsp  " + 
-            element.PricePaid  + " &nbsp &nbsp  &nbsp &nbsp  " + 
-            element.Date;
-            ul.appendChild(li);
-        });
-        divOrderList.appendChild(ul)
-    }
+    orderArray.forEach(function (element,) {   // use handy array forEach method
+        var li = document.createElement('li');
+        li.innerHTML = element.ID + ":  &nbsp &nbsp  &nbsp &nbsp " + 
+        element.StoreID + "  &nbsp &nbsp  &nbsp &nbsp "  +
+        element.SalesPersonID + " &nbsp &nbsp  &nbsp &nbsp  " + 
+        element.CdID  + " &nbsp &nbsp  &nbsp &nbsp  " + 
+        element.PricePaid  + " &nbsp &nbsp  &nbsp &nbsp  " + 
+        element.Date;
+        ul.appendChild(li);
+    });
+    divOrderList.appendChild(ul);
+}
     
-    function deleteOrder(ID) {
-    
-        fetch('/DeleteOrder/' + ID, {
-            method: "DELETE",
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-          })
-          .then(response => response.json()) 
-          .then(json => console.log(json),
-          createList()
-          )
-          .catch(err => console.log(err));
-    }
-    
-    
+function deleteOrder(ID) {
+    fetch('/DeleteOrder/' + ID, {
+        method: "DELETE",
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then(response => response.json()) 
+    .then(json => console.log(json), createList())
+    .catch(err => console.log(err));
+}

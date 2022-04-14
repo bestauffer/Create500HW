@@ -14,23 +14,19 @@ const OrderSchema = require("../orderSchema");
 
 // edited to include my non-admin, user level account and PW on mongo atlas
 // and also to include the name of the mongo DB that the collection is in (MoviesDB)
-const dbURI =
-  //"mongodb+srv://bcuser:bcuser@cluster0.nbt1n.mongodb.net/MoviesDB?retryWrites=true&w=majority";
-  //add correct connection string below
+const dbURI = "mongodb+srv://";
+  //add correct connection string above
 
   // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
 // by default, you need to set it to false.
-
-
-
-
 
 
 mongoose.set('useFindAndModify', false);
 
 const options = {
   reconnectTries: Number.MAX_VALUE,
-  poolSize: 10
+  poolSize: 10,
+  useNewUrlParser: true //delete if app has issues
 };
 
 mongoose.connect(dbURI, options).then(
@@ -60,8 +56,6 @@ router.get('/getAllOrders', function(req, res) {
   });
 });
 
-
-
 //Verify server is getting order
 router.post('/oneOrder', function(req, res) {
   const newOrder = new OrderSchema(req.body);  // get the object from the req object sent from browser
@@ -84,15 +78,13 @@ router.post('/addOrder', function(req, res) {
       res.status(500).send(err);
     }
     else {
-    // console.log(todo);
-    // res.status(201).json(todo);
-
-    var response = {
-      status  : 200,
-      success : 'Added Successfully'
-    }
-    res.end(JSON.stringify(response)); // send reply
-
+      // console.log(todo);
+      // res.status(201).json(todo);
+      var response = {
+        status  : 200,
+        success : 'Added Successfully'
+      }
+      res.end(JSON.stringify(response)); // send reply
     }
   });
 });
