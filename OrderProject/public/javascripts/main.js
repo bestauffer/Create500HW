@@ -75,16 +75,16 @@ function SetOrderValues(){
             break;
         case 98011:
             //17-20
-            order.SalesPersonID = Math.floor(Math.random() * 4) + 17;
+            order.SalesPersonID = Math.floor(Math.random() * 4 + 17);
             break;
         case 98046:
             //21-24
-            order.SalesPersonID = Math.floor(Math.random() * 4) + 21;
+            order.SalesPersonID = Math.floor(Math.random() * 4 + 21);
     }
     //0-9
     order.CdID = cdIdValues[Math.floor(Math.random() * 10)];
     //5-15
-    order.PricePaid = Math.floor(Math.random() * 11) + 5;
+    order.PricePaid = Math.floor(Math.random() * 11 + 5);
     //Update the Elements with the new values
     document.getElementById("storeID").value = order.StoreID; 
     document.getElementById("salesPersonID").value = order.SalesPersonID;
