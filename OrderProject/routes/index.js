@@ -14,11 +14,7 @@ const OrderSchema = require("../orderSchema");
 
 // edited to include my non-admin, user level account and PW on mongo atlas
 // and also to include the name of the mongo DB that the collection is in (MoviesDB)
-<<<<<<< HEAD
 const dbURI = "mongodb+srv://talam:Black1337@tashibcluster.xzyxl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-=======
-const dbURI = "mongodb+srv://";
->>>>>>> f8c27160c026539a4cb9e1b4cb74ce7406a1f0f6
   //add correct connection string above
 
   // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
@@ -93,7 +89,6 @@ router.post('/addOrder', function(req, res) {
   });
 });
 
-<<<<<<< HEAD
 router.get('/sortPriceSalesPerson', function(req, res) {
   // find {  takes values, but leaving it blank gets all}
   OrderSchema.find({SalesPersonID:{$in: ['7', '13']}, PricePaid: {$gt:6, $lt:14}}, null, {sort: { SalesPersonID : 'asc' }}, (err, AllOrders) => {
@@ -115,19 +110,7 @@ router.get('/sortStoreCdPrice', function(req, res) {
     res.status(200).json(AllOrders);
   });
 });
-/* router.get('/sortStoreCdPrice', function(req, res) {
-  // find {  takes values, but leaving it blank gets all}
-  OrderSchema.find({StoreID: "7", PricePaid: {$gt:6, $lt:14} }, (err, AllOrders) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-    }
-    res.status(200).json(AllOrders);
-  });
-}); */
 
-=======
->>>>>>> f8c27160c026539a4cb9e1b4cb74ce7406a1f0f6
 // delete order
 router.delete('/DeleteOrder/:ID', function (req, res) {
   OrderSchema.deleteOne({ ID: req.params.ID }, (err, note) => { 
