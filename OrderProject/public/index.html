@@ -33,14 +33,26 @@
   <input type="button" value="CREATE" id="buttonCreate" onclick="SetOrderValues()"/><br /><br />
   <input type="button" value="SUBMIT-ONE" id="buttonSubmitOne" onclick="SubmitOne()" /><br /><br />
   <input type="button" value="SUBMIT500" id="buttonSubmit500" onclick="Get500Orders()"/>
+  <input type="button" value="Sord SalesID: 7 PricePaid between 8 and 14" id="buttonSortPriceSalesPerson" onclick="sortPriceSalesPerson()"/>
 </div>
 
 
 <br />
 <br />
+<br />
 
+<h2>My Order List</h2>
+<div id="textString"> &nbsp &nbsp  &nbsp &nbsp ID: &nbsp &nbsp  &nbsp &nbsp StoreID: &nbsp &nbsp  &nbsp &nbsp  SalesPersonID: &nbsp  &nbsp &nbsp  &nbsp CdID:  &nbsp  &nbsp &nbsp  &nbsp PricePaid: &nbsp  &nbsp &nbsp  &nbsp Date:</div>
+<div id="divOrderList"></div>
+<br />
 
+<div>
 
+  <h2>Paste a order ID and click to delete</h2>
+  <input type="text" value="" id="deleteID" /> <br />
+  <input type="button" value="Delete Order" id="buttonDelete" />
+    
+</div>
  
 </body>
 

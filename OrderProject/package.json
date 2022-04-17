@@ -1,5 +1,5 @@
 {
-  "name": "movieproject",
+  "name": "orderproject",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.16.4",
+    "mongoose": "^5.13.14",
     "morgan": "~1.9.1"
   }
 }
