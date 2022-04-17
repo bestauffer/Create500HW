@@ -91,7 +91,7 @@ router.post('/addOrder', function(req, res) {
 
 router.get('/sortPriceSalesPerson', function(req, res) {
   // find {  takes values, but leaving it blank gets all}
-  OrderSchema.find({SalesPersonID: "7", PricePaid: {$gt:6, $lt:14} }, (err, AllOrders) => {
+  OrderSchema.find({SalesPersonID:{$in: ['7', '13']}, PricePaid: {$gt:6, $lt:14}}, null, {sort: { SalesPersonID : 'asc' }}, (err, AllOrders) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -99,6 +99,27 @@ router.get('/sortPriceSalesPerson', function(req, res) {
     res.status(200).json(AllOrders);
   });
 });
+
+router.get('/sortStoreCdPrice', function(req, res) {
+  // find {  takes values, but leaving it blank gets all}
+  OrderSchema.find({PricePaid: {$gt:10, $lt:15}}, null, {sort: { StoreID:'asc', CdID:'asc', PricePaid : 'desc' }}, (err, AllOrders) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+    res.status(200).json(AllOrders);
+  });
+});
+/* router.get('/sortStoreCdPrice', function(req, res) {
+  // find {  takes values, but leaving it blank gets all}
+  OrderSchema.find({StoreID: "7", PricePaid: {$gt:6, $lt:14} }, (err, AllOrders) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
+    res.status(200).json(AllOrders);
+  });
+}); */
 
 // delete order
 router.delete('/DeleteOrder/:ID', function (req, res) {

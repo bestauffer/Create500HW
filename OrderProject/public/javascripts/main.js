@@ -121,6 +121,16 @@ function sortPriceSalesPerson(){
         .then(response => response.json())  // get the data out of the response object
         .then( responseData => fillUL(responseData))    //update our array and li's
         .catch(err => console.log('Request Failed', err)); // Catch errors
+        
+}
+
+function sortStoreCdPrice(){
+    // update local array from server
+    fetch('/sortStoreCdPrice')
+    // Handle success
+    .then(response => response.json())  // get the data out of the response object
+    .then( responseData => fillUL(responseData))    //update our array and li's
+    .catch(err => console.log('Request Failed', err)); // Catch errors
 }
 
 //A function that says what the page does when it loads
