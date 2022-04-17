@@ -102,7 +102,7 @@ router.get('/sortPriceSalesPerson', function(req, res) {
 
 router.get('/sortStoreCdPrice', function(req, res) {
   // find {  takes values, but leaving it blank gets all}
-  OrderSchema.find({PricePaid: {$gt:10, $lt:15}}, null, {sort: { StoreID:'asc', CdID:'asc', PricePaid : 'desc' }}, (err, AllOrders) => {
+  OrderSchema.find({PricePaid: {$gt:9, $lt:16}}, null, {sort: { StoreID:'asc', CdID:'asc', PricePaid : 'desc' }}, (err, AllOrders) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
