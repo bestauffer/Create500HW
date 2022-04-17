@@ -112,6 +112,7 @@ function SubmitOne(){
     .then(json => console.log(json), createList())
     .catch(err => console.log(err));
     console.log(newOrder);
+<<<<<<< HEAD
 }
 
 function sortPriceSalesPerson(){
@@ -131,6 +132,8 @@ function sortStoreCdPrice(){
     .then(response => response.json())  // get the data out of the response object
     .then( responseData => fillUL(responseData))    //update our array and li's
     .catch(err => console.log('Request Failed', err)); // Catch errors
+=======
+>>>>>>> f8c27160c026539a4cb9e1b4cb74ce7406a1f0f6
 }
 
 //A function that says what the page does when it loads
